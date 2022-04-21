@@ -1,5 +1,5 @@
-# UTV-Eng-beamer-template
+# DAFN_ROS2_2_AdvancedCommunication
 
-Beamer presentation template for University of Rome "Tor Vergata", Engineering faculty.
+DAFN - ROS 2 Lecture 2: Advanced Communication.
 
-Compatible with Overleaf, natively supports the [`LaTeX-env`](https://github.com/IntelligentSystemsLabUTV/LaTeX-env) offline LaTeX development environment, based on Docker and Visual Studio Code.
+LaTeX source code and build files.
