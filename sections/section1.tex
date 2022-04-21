@@ -1,0 +1,87 @@
+% ### SECTION NAME ###
+\section{Section Name}
+\graphicspath{{figs/section1/}} % Use this to include figures easily
+
+% --- Frame: text ---
+\begin{frame}{Frame Title}{Frame Subtitle}
+    Frame contents
+     \begin{itemize}
+        \item Item 1
+        \item Item 2
+        \begin{itemize}
+            \item Subitem 2.1 
+            \item Subitem 2.2 
+        \end{itemize}
+    \end{itemize}
+    This is \textbg{bold text for normal text}.
+\end{frame}
+
+% --- Frame: blocks ---
+\begin{frame}{Frame Title}{Frame Subtitle}
+    \begin{block}{Block}
+        This is \textbf{bold text for blocks}.
+    \end{block}
+    \begin{alertblock}{Alert Block}
+        This is \textbr{bold text for alert blocks}.
+    \end{alertblock}
+    \begin{example}
+        This is \textbf{bold text for example blocks}.
+    \end{example}
+    \begin{block}{}
+        \centering
+        This is \textbf{bold text for unnamed blocks}.
+    \end{block}
+\end{frame}
+
+% --- Frame: equation ---
+\begin{frame}{Frame Title}{Frame Subtitle}
+\begin{block}{Numbered equation}
+    \begin{equation}
+        \label{eq:nlsys}
+        \left\{
+        \begin{aligned}
+            \dot{x} &= f(x, u)\\
+            y &= h(x,u)
+        \end{aligned}
+        \right.
+    \end{equation}
+\end{block}
+\begin{block}{Unnumbered equation}
+    \begin{equation*}
+        \label{eq:lsys}
+        \left\{
+        \begin{aligned}
+            \dot{x} &= Ax + Bu\\
+            y &= Cx
+        \end{aligned}
+        \right.
+    \end{equation*}
+\end{block}
+\end{frame}
+
+% --- Frame: TikZ ---
+\begin{frame}{Frame Title}{Frame Subtitle}
+    \begin{figure}
+        \begin{center}
+            \begin{tikzpicture}[auto, node distance=1cm,>=latex']
+                % Blocks
+                \node (controller) [block]  {$Controller$};
+                \node (ref) [input, left=of controller.170] {};
+                \node (feedback) [input, left=of controller.190] {};
+                \node (plant) [block, right=2 of controller] {$Plant$};
+                \node (disturbance) [input, above=of plant] {};
+                \node (doty) [coordinate, right=of plant] {};
+                \node (output) [output, right=of doty] {};
+                % Connections
+                \draw [->] (ref) -- node {$r$} (controller.170);
+                \draw [->] (feedback) -- node [below] {$u_c$} (controller.190);
+                \draw [->] (controller) -- node[pos=0.2] {$y_c$} node[pos=0.8] {$u$} (plant);
+                \draw [->] (plant) -- node {$y$} (output);
+                \draw [->] (disturbance) -- node {$d$} (plant);
+                \draw [-] (doty) -- ++ (0,-1.5) -| node {} (feedback);
+            \end{tikzpicture}
+            \caption{Feedback control system}
+            \label{fig:controlscheme}
+        \end{center}
+    \end{figure}
+\end{frame}

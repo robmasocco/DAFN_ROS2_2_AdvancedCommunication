@@ -1,0 +1,176 @@
+% Tor Vergata - Engineering Beamer template.
+% Roberto Masocco <robmasocco@gmail.com>
+% Alessandro Tenaglia <alessandro.tenaglia42@gmail.com>
+% February 5, 2022
+
+\ProvidesPackage{utvengbeamer}[2022/03/14 Tor Vergata Engineering Beamer Template]
+
+% ---------- %
+%  PACKAGES  %
+% ---------- %
+\RequirePackage[english]{babel}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{animate}
+\RequirePackage[center]{caption}
+\RequirePackage{csquotes}
+\RequirePackage{graphicx}
+\RequirePackage{hyperref}
+\RequirePackage[export]{adjustbox}
+\RequirePackage{ragged2e}
+\RequirePackage{microtype}
+\RequirePackage{siunitx} % See its docs for usage instructions!
+\RequirePackage{svg}
+\RequirePackage{kvoptions}
+
+% ------------------ %
+%  DOCUMENT OPTIONS  %
+% ------------------ %
+\SetupKeyvalOptions{
+    family=UTVENGB,
+    prefix=UTVENGB@
+}
+\DeclareStringOption[]{title}[Title]
+\newcommand*{\SetupTitle}{
+    \expandafter\@SetupTitle\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupTitle}[1]{
+    \setkeys{UTVENGB}{title={#1}}
+}
+\DeclareStringOption[]{subtitle}[Subtitle]
+\newcommand*{\SetupSubtitle}{
+    \expandafter\@SetupSubtitle\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupSubtitle}[1]{
+    \setkeys{UTVENGB}{subtitle={#1}}
+}
+\DeclareStringOption[]{event}[Event]
+\newcommand*{\SetupEvent}{
+    \expandafter\@SetupEvent\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupEvent}[1]{
+    \setkeys{UTVENGB}{event={#1}}
+}
+\DeclareStringOption[]{author}[Author]
+\newcommand*{\SetupAuthor}{
+    \expandafter\@SetupAuthor\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupAuthor}[1]{
+    \setkeys{UTVENGB}{author={#1}}
+}
+\DeclareStringOption[]{longauthor}[Long Author]
+\newcommand*{\SetupLongAuthor}{
+    \expandafter\@SetupLongAuthor\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupLongAuthor}[1]{
+    \setkeys{UTVENGB}{longauthor={#1}}
+}
+\DeclareStringOption[]{email}[author@email.com]
+\newcommand*{\SetupEmail}{
+    \expandafter\@SetupEmail\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupEmail}[1]{
+    \setkeys{UTVENGB}{email={#1}}
+}
+\DeclareStringOption[]{institute}[Institute]
+\newcommand*{\SetupInstitute}{
+    \expandafter\@SetupInstitute\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupInstitute}[1]{
+    \setkeys{UTVENGB}{institute={#1}}
+}
+\DeclareStringOption[]{longinstitute}[Long Institute]
+\newcommand*{\SetupLongInstitute}{
+    \expandafter\@SetupLongInstitute\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupLongInstitute}[1]{
+    \setkeys{UTVENGB}{longinstitute={#1}}
+}
+\DeclareStringOption[]{department}[Department]
+\newcommand*{\SetupDepartment}{
+    \expandafter\@SetupDepartment\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupDepartment}[1]{
+    \setkeys{UTVENGB}{department={#1}}
+}
+\DeclareStringOption[]{researchgroup}[Research Group]
+\newcommand*{\SetupResearchGroup}{
+    \expandafter\@SetupResearchGroup\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupResearchGroup}[1]{
+    \setkeys{UTVENGB}{researchgroup={#1}}
+}
+\DeclareStringOption[]{date}[Month Day, Year]
+\newcommand*{\SetupDate}{
+    \expandafter\@SetupDate\expandafter{\CurrentOption}
+}
+\newcommand*{\@SetupDate}[1]{
+    \setkeys{UTVENGB}{date={#1}}
+}
+\ProcessKeyvalOptions*
+
+% ----------------- %
+%  BEAMER SETTINGS  %
+% ----------------- %
+\pdfstringdefDisableCommands{
+    \def\\{}
+    \def\texttt#1{<#1>}
+}
+\usetheme{Madrid}
+\usefonttheme[onlymath]{serif}
+\definecolor{UTVgreen}{RGB}{0 125 52}
+\definecolor{UTVlightgreen}{rgb}{0.0 0.5 0.2}
+\definecolor{UTVred}{rgb}{1.0 0.0 0.0}
+\usecolortheme[named=UTVgreen]{structure}
+\let\tempone\itemize
+\let\temptwo\enditemize
+\renewenvironment{itemize}{\tempone\addtolength{\itemsep}{0.5\baselineskip}}{\temptwo}
+\title[\UTVENGB@event]{\UTVENGB@title}
+\subtitle{\UTVENGB@subtitle}
+\author[\UTVENGB@author]{\texorpdfstring{\UTVENGB@longauthor\newline\href{mailto:\UTVENGB@email}{\url{\UTVENGB@email}}}{\UTVENGB@longauthor}}
+\institute[\UTVENGB@institute]{\UTVENGB@longinstitute\newline\UTVENGB@department\newline\UTVENGB@researchgroup}
+\date{\UTVENGB@date}
+\titlegraphic{\includegraphics[height=1.75cm]{figs/logo_utv_eng_full_horz.png}}
+\AtBeginSection[]
+{
+    \begin{frame}
+    \frametitle{Roadmap}
+    \tableofcontents[currentsection]
+    \end{frame}
+}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{section in toc shaded}[square]
+\setbeamertemplate{subsection in toc}[square]
+\setbeamertemplate{subsection in toc shaded}[square]
+\setbeamertemplate{itemize item}[ball]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamercovered{invisible}
+
+% ----------------- %
+%  CUSTOM COMMANDS  %
+% ----------------- %
+\newcommand{\nolistindent}{\hspace{-3.5pt}}
+\newcommand{\textbg}[1]{\textcolor{UTVlightgreen}{\textbf{#1}}}
+\newcommand{\textbr}[1]{\textcolor{UTVred}{\textbf{#1}}}
+
+% --------------- %
+%  TIKZ SETTINGS  %
+% --------------- %
+\RequirePackage{tikz}
+\usetikzlibrary{
+                arrows,
+                arrows.meta,
+                fit,
+                positioning,
+                shapes,
+                automata
+}
+\tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+\tikzstyle{sum} = [draw, circle, node distance=0.8cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-, thin, black}]
