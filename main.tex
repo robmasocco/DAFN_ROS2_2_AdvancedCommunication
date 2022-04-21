@@ -1,25 +1,55 @@
-% Tor Vergata - Engineering Beamer template.
-% Roberto Masocco <robmasocco@gmail.com>
-% Alessandro Tenaglia <alessandro.tenaglia42@gmail.com>
-% February 5, 2022
+% DAFN - ROS 2 - Lecture 2: Advanced Communication
+% Roberto Masocco <roberto.masocco@uniroma2.it>
+% April 21, 2022
 
 \documentclass{beamer}
 
-% Customized document information by setting these string options
-% To leave a field empty, use "{}"
+% Slides layout
 \usepackage[
-    title={The Title},
-    subtitle={The Subtitle},
-    event={The Event},
-    author={The Author},
-    longauthor={The Long Author},
-    email={author@email.com},
-    institute={The Institute},
-    longinstitute={The Long Institute},
-    department={The Department},
-    researchgroup={The Research Group},
-    date={Month Day, Year}
+    title={Robot Operating System 2},
+    subtitle={Lecture 2: Advanced Communication},
+    event={DAFN},
+    author={Roberto Masocco},
+    longauthor={Roberto Masocco},
+    email={roberto.masocco@uniroma2.it},
+    institute={Tor Vergata},
+    longinstitute={University of Rome "Tor Vergata"},
+    department={Department of Civil Engineering and Computer Science Engineering},
+    researchgroup={Intelligent Systems Lab},
+    date={April 28, 2022}
 ]{utvengbeamer}
+
+% Code listings settings
+\usepackage[nomath]{lmodern}
+\definecolor{codegreen}{rgb}{0 0.5 0}
+\definecolor{codered}{rgb}{1 0 0}
+\definecolor{codeocher}{rgb}{0.8 0.47 0.13}
+\usepackage{listings}
+\lstdefinestyle{beamer}{
+    basicstyle=\ttfamily\small,
+    commentstyle=\color{codegreen},
+    breakatwhitespace=false,
+    captionpos=b,
+    frame=lines,
+    keepspaces=true,
+    keywordstyle=\color{codered}\bfseries,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\footnotesize,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    stringstyle=\color{codeocher},
+    tabsize=2
+}
+\lstset{style=beamer}
+\lstdefinelanguage{ros2msg}{
+  alsoletter={[, ], _, /},
+  morecomment=[l][\color{codegreen}]{\#},
+  morekeywords={int64, uint32, string, uint8, uint8[], std_msgs/Header}
+}
+
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -32,11 +62,10 @@
 \tableofcontents
 \end{frame}
 
-% Include sections here, like this
 % --- Section 1 ---
-\input{sections/section1}
+\input{sections/1_services}
 
 % --- Section 2 ---
-\input{sections/section2}
+\input{sections/2_actions}
 
 \end{document}
