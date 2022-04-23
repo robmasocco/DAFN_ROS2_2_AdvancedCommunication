@@ -46,7 +46,7 @@ In actual ROS 2 applications, the \textbg{client} requests the completion of som
   \item The \textbg{server} may \textbg{accept} or \textbg{reject} the goal request.
   \item Server computations, if any, are usually started when the goal is \textbg{executed}: the middleware only updates the state of the goal, the rest is up to the developer.
   \item The \textbg{client may cancel} the goal request; the \textbg{server may abort} the goal request; intermediate results and information, if any, are published by the server on the \textbg{feedback topic}.
-  \item The \textbg{server} sends a \textbg{result service request} to the client, to transmit the final result.
+  \item The \textbg{client} asks the server for the final result over the \textbg{result service}.
 \end{enumerate}
 \end{frame}
 
