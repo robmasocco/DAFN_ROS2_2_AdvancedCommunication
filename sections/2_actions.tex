@@ -44,7 +44,7 @@ In actual ROS 2 applications, the \textbg{client} requests the completion of som
 \begin{enumerate}
   \item The \textbg{client} sends a \textbg{goal service request} to the server.
   \item The \textbg{server} may \textbg{accept} or \textbg{reject} the goal request.
-  \item Server computations, if any, are usually started when the goal is \textbg{executed}: the middleware only updates the state of the goal, the rest is up to the developer.
+  \item Server computations are usually started when the goal is \textbg{executed}: the middleware only keeps track the state of the goal, its updates and the rest are up to the developer.
   \item The \textbg{client may cancel} the goal request; the \textbg{server may abort} the goal request; intermediate results and information, if any, are published by the server on the \textbg{feedback topic}.
   \item The \textbg{client} asks the server for the final result over the \textbg{result service}.
 \end{enumerate}
@@ -56,7 +56,7 @@ In actual ROS 2 applications, the \textbg{client} requests the completion of som
 Goal requests are handled with \textbf{callbacks}, while computations can be handled freely (usually in separate threads). When done, the goal must be marked as \textbf{succeeded} or \textbf{aborted}, which triggers another callback to contact the client's result service.
 \end{block}
 \begin{block}{Clients}
-Similarly to services, much is done with \textbf{\texttt{future} objects}. Cancellation request code can be placed almost everywhere and activated asynchronously.
+Similarly to services much is done with \textbf{\texttt{future} objects}, but \textbf{callbacks} must be defined to handle \textbf{goal}, \textbf{result} and \textbf{cancellation responses}, and \textbf{feedbacks}.
 \end{block}
 Handling all possible scenarios for a goal results in the \textbg{longest and most complicated code that a ROS 2 application may ever require}. {\Large\smiley{}}
 \end{frame}
