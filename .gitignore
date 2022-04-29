@@ -276,7 +276,3 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
-
-## Build results
-build/*
-!build/.gitkeep
